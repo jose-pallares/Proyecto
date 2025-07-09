@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SegurityConnect - Inicio</title>
+    <link rel="stylesheet" href="/css/inicio.css">
+</head>
+<body>
+
+<header class="portada">
+    <div class="overlay">
+        <h1>Bienvenido a SegurityConnect</h1>
+        <p>Disfruta de una experiencia única</p>
+
+        <!-- Botón siempre visible -->
+        <a th:href="@{/carrito}" class="boton-reservar">Carrito</a>
+
+        <!-- Solo visible si el usuario es admin -->
+        <a th:if="${usuario != null and usuario.role == 'admin'}"
+           th:href="@{/users}"
+           class="boton-reservar">
+            Administracion
+        </a>
+
+        <!-- Estado en línea / Sesión -->
+        <div th:if="${usuario != null}">
+            <p th:class="'estado ' + (${usuario.estado} == 'En línea' ? 'online' : 'offline')"
+               th:text="'Estado: ' + ${usuario.estado}">Estado: En línea</p>
+
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="boton-logout">Cerrar Sesión</button>
+            </form>
+        </div>
+        <div th:unless="${usuario != null}">
+            <a th:href="@{/login}" class="boton-login">Iniciar Sesión</a>
+        </div>
+    </div>
+</header>
+
+<!-- Botiquines -->
+<section class="destacados">
+    <h2>Botiquines</h2>
+    <div class="contenedor-tarjetas">
+
+        <div class="tarjeta">
+            <img src="https://proteccionx.com/wp-content/uploads/2022/02/4-2-500x500.jpg">
+            <div class="info">
+                <h3>Botiquín A</h3>
+                <p>Fácil de transportar</p>
+                <a th:href="@{/carrito}" class="btn-mas">Comprar</a>
+            </div>
+        </div>
+
+        <div class="tarjeta">
+            <img src="https://proteccionx.com/wp-content/uploads/2021/09/BOTIQUIN-vehicular-AJUSTE-1-500x500.jpg">
+            <div class="info">
+                <h3>Botiquín B</h3>
+                <p>Para porte de vehículo</p>
+                <a th:href="@{/carrito}" class="btn-mas">Comprar</a>
+            </div>
+        </div>
+
+        <div class="tarjeta">
+            <img src="https://proteccionx.com/wp-content/uploads/2021/09/BOTIN-SENCILLO-CANGURO2-500x500.jpg">
+            <div class="info">
+                <h3>Botiquín C</h3>
+                <p>Cangurera práctica</p>
+                <a th:href="@{/carrito}" class="btn-mas">Comprar</a>
+            </div>
+        </div>
+
+        <div class="tarjeta">
+            <img src="https://proteccionx.com/wp-content/uploads/2018/09/BOTIQUIN-EMPOTRABLE-500x500.jpg">
+            <div class="info">
+                <h3>Botiquín D</h3>
+                <p>Para establecimiento</p>
+                <a th:href="@{/carrito}" class="btn-mas">Comprar</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Puertas -->
+<section class="destacados">
+    <h2>Puertas</h2>
+    <div class="contenedor-tarjetas">
+
+        <div class="tarjeta">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaFGF3fZ0QOFHr9FDHRGjLMREaTt-PdJ4qXw&s">
+            <div class="info">
+                <h3>Puerta A</h3>
+                <p>Máxima seguridad</p>
+                <a th:href="@{/carrito}" class="btn-mas">Comprar</a>
+            </div>
+        </div>
+
+        <div class="tarjeta">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2z4ChCC14Tlki277jMsn9lH3Hk1FoSAczso1gDef7cr11_wdEvQwfgLob3IE1A2iIdww&usqp=CAU">
+            <div class="info">
+                <h3>Puerta B</h3>
+                <p>Resistente y duradera</p>
+                <a th:href="@{/carrito}" class="btn-mas">Comprar</a>
+            </div>
+        </div>
+
+        <div class="tarjeta">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc6_W_Y9k_6sQwPrncxDQXDx3BVV-197UGwA&s">
+            <div class="info">
+                <h3>Puerta C</h3>
+                <p>Protección reforzada</p>
+                <a th:href="@{/carrito}" class="btn-mas">Comprar</a>
+            </div>
+        </div>
+
+        <div class="tarjeta">
+            <img src="https://puertasblindadas.org.es/wp-content/uploads/2023/04/Puerta-de-seguridad-enchapillada-modelo-montreal-768x404-1.jpg">
+            <div class="info">
+                <h3>Puerta D</h3>
+                <p>Antirrobo certificada</p>
+                <a th:href="@{/carrito}" class="btn-mas">Comprar</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Compra Exitosa</title>
+    <link rel="stylesheet" th:href="@{/css/compra_exitosa.css}">
+</head>
+<body>
+    <h1>¡Compra realizada con éxito!</h1>
+
+    <p>Gracias por su compra. Aquí están los productos adquiridos:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="item : ${productos}">
+                <td th:text="${item.product.name}">Nombre</td>
+                <td th:text="${item.product.price}">Precio</td>
+                <td th:text="${item.cantidad}">Cantidad</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/carrito}">Volver al catálogo</a>
+</body>
+</html>
